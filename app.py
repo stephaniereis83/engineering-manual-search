@@ -9,9 +9,53 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 
-st.set_page_config(page_title="Engineering Manual Search", page_icon="🛞", layout="wide")
+st.set_page_config(page_title="Engineering Manual Search", page_icon="🌀", layout="wide")
 
-st.title("🛞 Engineering Manual Search")
+st.markdown(
+    """
+    <style>
+      :root {
+        --hull: #0B1B26;
+        --plate: #142B3B;
+        --plate-2: #1D3B50;
+        --seam: #2C4E67;
+        --paper: #EDE8DC;
+        --paper-dim: #A9B8C2;
+        --tab-amber: #E0A63A;
+      }
+      .stApp { background-color: var(--hull); color: var(--paper); }
+      section[data-testid="stSidebar"] { background-color: var(--plate); border-right: 1px solid var(--seam); }
+      section[data-testid="stSidebar"] * { color: var(--paper) !important; }
+      h1, h2, h3, p, label, span, div { color: var(--paper); }
+      .stButton>button, .stDownloadButton>button {
+        background-color: var(--tab-amber); color: var(--hull); border: none; font-weight: 600;
+      }
+      .stButton>button:hover { background-color: #ecb658; }
+      div[data-testid="stChatInput"] textarea, .stTextInput input {
+        background-color: var(--plate-2) !important; color: var(--paper) !important; border: 1px solid var(--seam) !important;
+      }
+      div[data-baseweb="notification"], .stAlert { background-color: var(--plate-2); border-left: 3px solid var(--tab-amber); }
+      hr { border-color: var(--seam); }
+      .anchor-header { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+      .anchor-header svg { flex-shrink: 0; }
+      .anchor-header h1 { margin: 0; font-size: 30px; }
+      .anchor-header .accent { color: var(--tab-amber); }
+    </style>
+
+    <div class="anchor-header">
+      <svg width="30" height="30" viewBox="0 0 24 24">
+        <g fill="#E0A63A">
+          <ellipse cx="12" cy="6" rx="2.6" ry="6" transform="rotate(0 12 12)"/>
+          <ellipse cx="12" cy="6" rx="2.6" ry="6" transform="rotate(120 12 12)"/>
+          <ellipse cx="12" cy="6" rx="2.6" ry="6" transform="rotate(240 12 12)"/>
+        </g>
+        <circle cx="12" cy="12" r="2.4" fill="#0B1B26" stroke="#E0A63A" stroke-width="1.3"/>
+      </svg>
+      <h1>Engineering Manual <span class="accent">Search</span></h1>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
 st.caption("Upload a marine equipment manual and ask questions with page citations.")
 
 with st.sidebar:
