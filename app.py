@@ -60,12 +60,12 @@ st.caption("Upload a marine equipment manual and ask questions with page citatio
 
 with st.sidebar:
     st.header("Settings")
-    api_key = st.text_input(
-        "Anthropic API key",
-        type="password",
-        value=os.getenv("ANTHROPIC_API_KEY", ""),
-        help="Pulled automatically from Streamlit Cloud secrets if set there.",
-    )
+    api_key = os.getenv("ANTHROPIC_API_KEY", "")
+    if not api_key:
+        st.error(
+            "No API key configured. Add ANTHROPIC_API_KEY under this app's "
+            "Secrets in Streamlit Cloud settings — the app will not work until then."
+        )
     model = st.text_input("Claude model", value="claude-sonnet-5")
     top_k = st.slider("Pages/chunks to retrieve", 2, 8, 5)
     st.divider()
